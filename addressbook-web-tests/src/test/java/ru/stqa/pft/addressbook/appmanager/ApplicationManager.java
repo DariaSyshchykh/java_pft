@@ -43,14 +43,6 @@ public class ApplicationManager {
     }
   }
 
-  private boolean isAlertPresent() {
-    try {
-      driver.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
 
   private boolean isElementPresent(By by) {
     try {
