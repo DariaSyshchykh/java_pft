@@ -9,6 +9,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 public class TestBase {
@@ -31,6 +32,4 @@ public class TestBase {
   public void tearDown() throws Exception {
     app.stop();
   }
-
-
 }

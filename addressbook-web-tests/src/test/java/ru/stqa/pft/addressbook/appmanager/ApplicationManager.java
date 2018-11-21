@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 public class ApplicationManager {
@@ -116,7 +117,15 @@ public class ApplicationManager {
     }
   }
 
+  protected void submitDeletionContact() {
+    boolean acceptNextAlert = true;
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
 
+  public void chooseElement() {
+    driver.findElement(By.id("16")).click();
+  }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
@@ -124,5 +133,21 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+  public void submitSelection() {
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
+  }
+
+  public void selectElement() {
+    driver.findElement(By.id("17")).click();
+    boolean acceptNextAlert = true;
+  }
+
+  public void deleteElement() {
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+
+  public void gotoHomePage() {
+    driver.findElement(By.linkText("home")).click();
   }
 }
