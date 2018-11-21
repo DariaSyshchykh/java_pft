@@ -139,7 +139,7 @@ public class ApplicationManager {
   }
 
   public void selectElement() {
-    driver.findElement(By.id("17")).click();
+    driver.findElement(By.id("19")).click();
     boolean acceptNextAlert = true;
   }
 
@@ -150,4 +150,7 @@ public class ApplicationManager {
   public void gotoHomePage() {
     driver.findElement(By.linkText("home")).click();
   }
+  private String baseUrl;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
 }
