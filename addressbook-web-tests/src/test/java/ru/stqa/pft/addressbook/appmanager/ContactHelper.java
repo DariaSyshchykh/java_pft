@@ -3,13 +3,19 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import static org.testng.Assert.assertTrue;
 
-public class ContactHelper {
-  protected WebDriver driver;
-  protected GroupHelper groupHelper;
+public class ContactHelper  extends HelperBase{
+  //private WebDriver driver;
+ // protected GroupHelper groupHelper;
+
+  public ContactHelper(WebDriver driver) {
+    super(driver);
+  }
+
 
   public void returnToContactPage() {
     driver.findElement(By.linkText("home page")).click();
@@ -48,14 +54,14 @@ public class ContactHelper {
     try {
       Alert alert = driver.switchTo().alert();
       String alertText = alert.getText();
-      if (groupHelper.acceptNextAlert) {
+      if (acceptNextAlert) {
         alert.accept();
       } else {
         alert.dismiss();
       }
       return alertText;
     } finally {
-      groupHelper.acceptNextAlert = true;
+      acceptNextAlert = true;
     }
   }
 
@@ -70,7 +76,7 @@ public class ContactHelper {
   }
 
   public void selectElement() {
-    driver.findElement(By.id("25")).click();
+    driver.findElement(By.id("26")).click();
     boolean acceptNextAlert = true;
   }
 
