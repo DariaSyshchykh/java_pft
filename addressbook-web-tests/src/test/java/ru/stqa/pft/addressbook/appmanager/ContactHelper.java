@@ -70,7 +70,7 @@ public class ContactHelper {
   }
 
   public void selectElement() {
-    driver.findElement(By.id("21")).click();
+    driver.findElement(By.id("25")).click();
     boolean acceptNextAlert = true;
   }
 

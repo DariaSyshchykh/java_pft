@@ -68,7 +68,7 @@ public class ApplicationManager {
   }
 
   public void chooseElement() {
-    contactHelper.driver.findElement(By.id("16")).click();
+    contactHelper.driver.findElement(By.id("25")).click();
   }
 
   public GroupHelper getGroupHelper() {
