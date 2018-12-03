@@ -60,7 +60,7 @@ public class ContactHelper  extends HelperBase{
   }
 
   public void selectElement() {
-    driver.findElement(By.id("30")).click();
+    driver.findElement(By.id("32")).click();
     boolean acceptNextAlert = true;
   }
 
@@ -70,5 +70,14 @@ public class ContactHelper  extends HelperBase{
 
   public void gotoHomePage() {
     driver.findElement(By.linkText("home")).click();
+  }
+
+  public void initContactModification() {
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[5]")).click();
+
+  }
+
+  public void updateContactModification() {
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
   }
 }
