@@ -26,28 +26,12 @@ public class ContactHelper  extends HelperBase{
   }
 
   public void fillContactForm(ContactData contactData) {
-    driver.findElement(By.name("firstname")).click();
-    driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-    driver.findElement(By.name("theform")).click();
-    driver.findElement(By.name("middlename")).click();
-    driver.findElement(By.name("middlename")).clear();
-    driver.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
-    driver.findElement(By.name("lastname")).click();
-    driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-    driver.findElement(By.name("mobile")).click();
-    driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
-    driver.findElement(By.name("theform")).click();
-    driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
-    driver.findElement(By.name("theform")).click();
-    driver.findElement(By.name("address2")).click();
-    driver.findElement(By.name("address2")).clear();
-    driver.findElement(By.name("address2")).sendKeys(contactData.getAddress());
+    type((By.name("firstname")), contactData.getFirstname());
+    type((By.name("middlename")),contactData.getMiddlename());
+    type((By.name("lastname")), contactData.getLastname());
+    type((By.name("mobile")), contactData.getMobile());
+    type((By.name("email")), contactData.getEmail());
+    type((By.name("address2")),contactData.getAddress());
   }
 
   private String closeAlertAndGetItsText() {
@@ -76,7 +60,7 @@ public class ContactHelper  extends HelperBase{
   }
 
   public void selectElement() {
-    driver.findElement(By.id("28")).click();
+    driver.findElement(By.id("29")).click();
     boolean acceptNextAlert = true;
   }
 

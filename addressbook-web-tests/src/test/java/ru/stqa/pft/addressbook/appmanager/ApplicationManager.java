@@ -59,7 +59,7 @@ public class ApplicationManager {
   }
 
   public void chooseElement() {
-    driver.findElement(By.id("28")).click();
+    driver.findElement(By.id("29")).click();
   }
 
   public GroupHelper getGroupHelper() {
