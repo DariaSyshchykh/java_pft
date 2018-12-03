@@ -76,7 +76,7 @@ public class ContactHelper  extends HelperBase{
   }
 
   public void selectElement() {
-    driver.findElement(By.id("26")).click();
+    driver.findElement(By.id("28")).click();
     boolean acceptNextAlert = true;
   }
 

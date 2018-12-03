@@ -11,6 +11,7 @@ import static org.testng.Assert.fail;
 public class ApplicationManager {
 
   protected WebDriver driver;
+
   protected GroupHelper groupHelper;
 
   private ContactHelper contactHelper;
@@ -37,10 +38,6 @@ public class ApplicationManager {
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys(password);
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
-  }
-
-  public void gotoContactPage() {
-    driver.findElement(By.linkText("add new")).click();
   }
 
 
@@ -72,15 +69,11 @@ public class ApplicationManager {
   }
 
   public void chooseElement() {
-    driver.findElement(By.id("26")).click();
+    driver.findElement(By.id("28")).click();
   }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
-  }
-
-  public NavigationHelper getNavigationHelper() {
-    return navigationHelper;
   }
 
   private String baseUrl;
@@ -89,5 +82,9 @@ public class ApplicationManager {
 
   public ContactHelper getContactHelper() {
     return contactHelper;
+  }
+
+  public NavigationHelper getNavigationHelper() {
+    return navigationHelper;
   }
 }
