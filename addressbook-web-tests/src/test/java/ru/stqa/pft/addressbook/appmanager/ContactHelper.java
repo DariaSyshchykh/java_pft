@@ -60,7 +60,7 @@ public class ContactHelper  extends HelperBase{
   }
 
   public void selectElement() {
-    driver.findElement(By.id("29")).click();
+    driver.findElement(By.id("30")).click();
     boolean acceptNextAlert = true;
   }
 
