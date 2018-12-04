@@ -1,13 +1,14 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-  protected final ApplicationManager app = new ApplicationManager();
+  protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
   private WebDriver driver;
 
 
