@@ -2,8 +2,10 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import static org.testng.Assert.assertTrue;
@@ -32,6 +34,10 @@ public class ContactHelper  extends HelperBase{
     type((By.name("mobile")), contactData.getMobile());
     type((By.name("email")), contactData.getEmail());
     type((By.name("address2")),contactData.getAddress());
+
+    if (isElementPresent (By.name("new_group"))) {
+      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }
   }
 
   private String closeAlertAndGetItsText() {
