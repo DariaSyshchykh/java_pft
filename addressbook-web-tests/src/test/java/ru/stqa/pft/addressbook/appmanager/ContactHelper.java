@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import static org.testng.Assert.assertTrue;
@@ -27,7 +28,7 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type((By.name("firstname")), contactData.getFirstname());
     type((By.name("middlename")),contactData.getMiddlename());
     type((By.name("lastname")), contactData.getLastname());
@@ -35,8 +36,10 @@ public class ContactHelper  extends HelperBase{
     type((By.name("email")), contactData.getEmail());
     type((By.name("address2")),contactData.getAddress());
 
-    if (isElementPresent (By.name("new_group"))) {
+    if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    } else {
+      Assert.assertFalse (isElementPresent (By.name("new_group")));
     }
   }
 
