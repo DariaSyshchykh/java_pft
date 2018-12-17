@@ -68,9 +68,8 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
   }
 
-  public void selectElement() {
-    driver.findElement(By.id("70")).click();
-    boolean acceptNextAlert = true;
+  public void selectElement(int index) {
+    driver.findElements(By.name("selected[]")).get(index).click();;
   }
 
   public void deleteElement() {
