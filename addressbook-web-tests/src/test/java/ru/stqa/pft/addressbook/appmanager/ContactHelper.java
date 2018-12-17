@@ -69,7 +69,7 @@ public class ContactHelper  extends HelperBase{
   }
 
   public void selectElement() {
-    driver.findElement(By.id("32")).click();
+    driver.findElement(By.id("70")).click();
     boolean acceptNextAlert = true;
   }
 
@@ -88,5 +88,9 @@ public class ContactHelper  extends HelperBase{
 
   public void updateContactModification() {
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+  }
+
+  public int getContactCount() {
+    return driver.findElements(By.name("selected[]")).size();
   }
 }
