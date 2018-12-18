@@ -17,18 +17,20 @@ public class ContactData {
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
     return Objects.equals(firstname, that.firstname) &&
+            Objects.equals(middlename, that.middlename) &&
             Objects.equals(lastname, that.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname);
+    return Objects.hash(firstname, middlename, lastname);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
             "firstname='" + firstname + '\'' +
+            ", middlename='" + middlename + '\'' +
             ", lastname='" + lastname + '\'' +
             '}';
   }
