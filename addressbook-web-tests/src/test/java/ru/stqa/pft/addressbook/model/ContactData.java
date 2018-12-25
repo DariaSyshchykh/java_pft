@@ -40,8 +40,12 @@ public class ContactData {
     return id;
   }
 
-  public ContactData(String firstname, String middlename, String lastname) {
+  public void setId(int id) {
     this.id = id;
+  }
+
+  public ContactData(String firstname, String middlename, String lastname) {
+    this.id = 0;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
