@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
+  private int id;
   private final String firstname;
   private final String middlename;
   private final String lastname;
@@ -16,26 +17,42 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(firstname, that.firstname) &&
-            Objects.equals(middlename, that.middlename) &&
+    return Objects.equals(id, that.id) &&
+            Objects.equals(firstname, that.firstname) &&
             Objects.equals(lastname, that.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, middlename, lastname);
+    return Objects.hash(id, firstname, lastname);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", middlename='" + middlename + '\'' +
+            "id='" + id + '\'' +
+            ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
             '}';
   }
 
+  public Integer getId() {
+    return id;
+  }
+
   public ContactData(String firstname, String middlename, String lastname) {
+    this.id = id;
+    this.firstname = firstname;
+    this.middlename = middlename;
+    this.lastname = lastname;
+    this.mobile = mobile;
+    this.email = email;
+    this.address = address;
+    this.group = group;
+  }
+
+  public ContactData(Integer id, String firstname, String middlename, String lastname) {
+    this.id = id;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;

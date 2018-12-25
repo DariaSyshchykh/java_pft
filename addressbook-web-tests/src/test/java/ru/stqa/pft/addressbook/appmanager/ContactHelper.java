@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
@@ -28,7 +27,7 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
   }
 
-  public void fillContactForm(ContactData contactData, boolean creation) {
+  public void fillContactForm(ContactData contactData) {
     type((By.name("firstname")), contactData.getFirstname());
     type((By.name("middlename")),contactData.getMiddlename());
     type((By.name("lastname")), contactData.getLastname());
@@ -68,7 +67,7 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
   }
 
-  public void selectElement(int index) {
+  public void selectContact(int index) {
     driver.findElements(By.name("selected[]")).get(index).click();;
   }
 
@@ -80,10 +79,15 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.linkText("home")).click();
   }
 
-  public void initContactModification() {
+ /* public void initContactModification() {
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[5]")).click();
 
   }
+  */
+  public void initContactModification(int id) {
+    driver.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+  }
+
 
   public void updateContactModification() {
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
@@ -95,10 +99,13 @@ public class ContactHelper  extends HelperBase{
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = driver.findElements(By.cssSelector("td.center:first-child"));
+    List<WebElement> elements = driver.findElements(By.cssSelector("tr"));
+    elements.remove(0);
     for (WebElement element : elements) {
-      String name = element.getText();
-      ContactData contact = new ContactData(name, null, null);
+      String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+      Integer id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, name, null, lastname);
       contacts.add(contact);
     }
     return contacts;

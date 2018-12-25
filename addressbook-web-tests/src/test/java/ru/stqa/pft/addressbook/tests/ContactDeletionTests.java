@@ -12,7 +12,7 @@ public class ContactDeletionTests  extends TestBase{
   public void testDeletionContact() throws Exception {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().gotoHomePage();
-    app.getContactHelper().selectElement(before.size() - 1);
+    app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().submitSelection();
     app.getContactHelper().deleteElement();
     app.getContactHelper().gotoHomePage();
