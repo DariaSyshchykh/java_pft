@@ -7,5 +7,5 @@ repositories {
 }
 
 dependencies {                                              // Вводим замисимость (добавляем библиотеку)
-    compile 'org.testng:testng:6.9.10'                      // Вставляем текст с сайта https://search.maven.org
+    compile 'org.testng:testng:6.9.10'                          // Вставляем текст с сайта https://search.maven.org
 }
