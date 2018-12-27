@@ -8,10 +8,11 @@ import java.util.List;
 
 public class ContactDeletionTests  extends TestBase{
 
-  @Test (enabled = false)
+  @Test
   public void testDeletionContact() throws Exception {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().gotoHomePage();
+    ContactData contact = new ContactData().withId(before.size() - 1);
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().submitSelection();
     app.getContactHelper().deleteElement();

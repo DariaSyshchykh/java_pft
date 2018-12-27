@@ -3,10 +3,26 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
+  private int id = Integer.MAX_VALUE;
+  private String firstname;
+  private String middlename;
+
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  private String lastname;
   private String mobile;
   private String email;
   private String address;
@@ -25,8 +41,9 @@ public class ContactData {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
   }
 
   @Override
@@ -41,28 +58,6 @@ public class ContactData {
   @Override
   public int hashCode() {
     return Objects.hash(firstname, lastname);
-  }
-
-  public ContactData(String firstname, String middlename, String lastname) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.mobile = mobile;
-    this.email = email;
-    this.address = address;
-    this.group = group;
-  }
-
-  public ContactData(Integer id, String firstname, String middlename, String lastname) {
-    this.id = id;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.mobile = mobile;
-    this.email = email;
-    this.address = address;
-    this.group = group;
   }
 
   public String getFirstname() {
@@ -91,5 +86,9 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 }

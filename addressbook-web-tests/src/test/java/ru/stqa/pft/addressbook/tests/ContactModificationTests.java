@@ -11,12 +11,13 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testContactModification() {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().gotoHomePage();
     app.getContactHelper().selectContact(before.size() - 1);
-    ContactData contact =  new ContactData(before.get(before.size()-1).getId(),"Dary", "Dar", "Sushchikh");
+    ContactData contact =  new ContactData()
+            .withId(before.get(before.size()-1).getId()).withFirstname("Dary").withMiddlename("Dar").withLastname("Sushchikh");
     app.getContactHelper().initContactModification(contact.getId());
     app.getContactHelper().fillContactForm(contact);
     app.getContactHelper().updateContactModification();
