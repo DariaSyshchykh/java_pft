@@ -15,7 +15,7 @@ public class ContactDeletionTests  extends TestBase{
     ContactData deletedContact = before.iterator().next();
     app.getContactHelper().gotoHomePage();
     ContactData contact = new ContactData().withId(before.size() - 1);
-    app.getContactHelper().selectContact(before.size() - 1);
+    app.getContactHelper().selectContact(deletedContact.getId());
     app.getContactHelper().submitSelection();
     app.getContactHelper().deleteElement();
     app.getContactHelper().gotoHomePage();

@@ -69,8 +69,8 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
   }
 
-  public void selectContact(int index) {
-    driver.findElements(By.name("selected[]")).get(index).click();;
+  public void selectContact(int id) {
+    driver.findElement(By.cssSelector("input[value='" + id + "']")).click();;
   }
 
   /*public void selectContact(int id) {
@@ -80,6 +80,9 @@ public class ContactHelper  extends HelperBase{
   public void deleteElement() {
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
+
+
+
 
   public void gotoHomePage() {
     driver.findElement(By.linkText("home")).click();
