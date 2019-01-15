@@ -73,6 +73,10 @@ public class ContactHelper  extends HelperBase{
     driver.findElements(By.name("selected[]")).get(index).click();;
   }
 
+  /*public void selectContact(int id) {
+    driver.findElement(By.cssSelector(String.format("td[id='%s']", id))).click();
+  }
+*/
   public void deleteElement() {
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
