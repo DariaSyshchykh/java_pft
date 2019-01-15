@@ -1,11 +1,8 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +10,6 @@ import java.util.Set;
 import static org.testng.Assert.assertTrue;
 
 public class ContactHelper  extends HelperBase{
-  //private WebDriver driver;
- // protected GroupHelper groupHelper;
 
   public ContactHelper(WebDriver driver) {
     super(driver);
@@ -73,26 +68,14 @@ public class ContactHelper  extends HelperBase{
     driver.findElement(By.cssSelector("input[value='" + id + "']")).click();;
   }
 
-  /*public void selectContact(int id) {
-    driver.findElement(By.cssSelector(String.format("td[id='%s']", id))).click();
-  }
-*/
   public void deleteElement() {
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
-
-
-
 
   public void gotoHomePage() {
     driver.findElement(By.linkText("home")).click();
   }
 
- /* public void initContactModification() {
-    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='import'])[1]/following::img[5]")).click();
-
-  }
-  */
   public void initContactModification(int id) {
     driver.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
@@ -104,19 +87,6 @@ public class ContactHelper  extends HelperBase{
 
   public int getContactCount() {
     return driver.findElements(By.name("selected[]")).size();
-  }
-
-  public List<ContactData> getContactList() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = driver.findElements(By.cssSelector("tr"));
-    elements.remove(0);
-    for (WebElement element : elements) {
-      String name = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      String lastname = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-      Integer id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstname(name).withLastname(lastname));
-    }
-    return contacts;
   }
 
   public Set<ContactData> all() {
