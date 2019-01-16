@@ -38,6 +38,17 @@ public class ContactHelper  extends HelperBase{
     }*/
   }
 
+  protected void submitDeletionContact() {
+    boolean acceptNextAlert = true;
+    driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]")).click();
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+
+  public int count() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
+
+
   private String closeAlertAndGetItsText() {
     try {
       Alert alert = driver.switchTo().alert();

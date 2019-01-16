@@ -19,7 +19,7 @@ public class GroupHelper extends HelperBase{
 
   }
 
-  public void submitGriupCreation() {
+  public void submitGroupCreation() {
     click(By.name("submit"));
   }
 
@@ -49,10 +49,18 @@ public class GroupHelper extends HelperBase{
     click(By.name("update"));
   }
 
+  public boolean isThereAGroup() {
+    return isElementPresent (By.name("selected[]"));
+  }
+
+  public int count() {
+    return driver.findElements(By.name("selected[]")).size();
+  }
+
   public void create(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
-    submitGriupCreation();
+    submitGroupCreation();
     groupCache = null;
     returnToGroupPage();
   }

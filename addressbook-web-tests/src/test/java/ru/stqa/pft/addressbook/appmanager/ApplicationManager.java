@@ -57,6 +57,10 @@ public class ApplicationManager {
     return groupHelper;
   }
 
+  public ContactHelper contact() {
+    return contactHelper;
+  }
+
   private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
@@ -69,5 +73,6 @@ public class ApplicationManager {
           () {
     return navigationHelper;
   }
+
 }
 
