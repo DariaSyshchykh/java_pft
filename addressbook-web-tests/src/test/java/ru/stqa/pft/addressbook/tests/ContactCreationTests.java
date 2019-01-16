@@ -1,29 +1,28 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    Set<ContactData> before = app.getContactHelper().all();
+    Contacts before = app.getContactHelper().all();
     app.goTo().gotoContactPage();
     ContactData contact = new ContactData().withFirstname("Dary1").withMiddlename("Dar").withLastname("Sushchikh");
     app.getContactHelper().fillContactForm(contact);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().gotoHomePage();
-    Set<ContactData> after = app.getContactHelper().all();
-    Assert.assertEquals(after.size(), before.size() + 1);
-
-   // contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
-    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
-    before.add(contact);
-    Assert.assertEquals(before, after);
+    Contacts after = app.getContactHelper().all();
+    assertThat(after.size(), equalTo(before.size() + 1));
+    assertThat(after, equalTo(
+            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 
 }
