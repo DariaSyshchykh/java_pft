@@ -1,11 +1,28 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String firstname;
   private String middlename;
+  private String lastname;
+  private File photo;
+
+  public File getPhoto() {
+    return photo;
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
+  private String mobile;
+  private String email;
+  private String address;
+  private String group;
 
   public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
@@ -22,11 +39,10 @@ public class ContactData {
     return this;
   }
 
-  private String lastname;
-  private String mobile;
-  private String email;
-  private String address;
-  private String group;
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
 
   @Override
   public String toString() {
@@ -39,11 +55,6 @@ public class ContactData {
 
   public Integer getId() {
     return id;
-  }
-
-  public ContactData withId(int id) {
-    this.id = id;
-    return this;
   }
 
   public String getFirstname() {
@@ -91,5 +102,9 @@ public class ContactData {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public void setPhoto(File photo) {
+    this.photo = photo;
   }
 }
