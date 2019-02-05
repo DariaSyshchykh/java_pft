@@ -8,4 +8,6 @@ dependencies {                                              // Вводим за
     compile 'org.testng:testng:6.9.10'                      // Вставляем текст с сайта https://search.maven.org
     compile 'org.seleniumhq.selenium:selenium-java:3.14.0'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    compile 'com.beust:jcommander:1.48'
+
 }
