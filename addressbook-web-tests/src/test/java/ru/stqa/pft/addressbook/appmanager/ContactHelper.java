@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 ;
+import java.io.File;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
@@ -27,7 +28,7 @@ public class ContactHelper  extends HelperBase{
     type((By.name("firstname")), contactData.getFirstname());
     type((By.name("middlename")),contactData.getMiddlename());
     type((By.name("lastname")), contactData.getLastname());
-    attach(By.name("photo"), contactData.getPhoto());
+    attach((By.name("photo")), new File(contactData.getPhoto().getAbsolutePath()));
    /* type((By.name("mobile")), contactData.getMobile());
     type((By.name("email")), contactData.getEmail());
     type((By.name("address2")),contactData.getAddress());
